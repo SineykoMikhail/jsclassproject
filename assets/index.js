@@ -1,28 +1,35 @@
 class Cat {
-  constructor(breed, name, catchingmice = 0) {
+  constructor(breed, name, mouseCattched = 0) {
     this.breed = breed;
     this.name = name;
-    this.catchingmice = catchingmice;
+    this.mouseCatched = mouseCattched;
   }
   voice() {
-    return "Кот ${this.name}мяукает";
+    return `Кот ${this.name}мяукает`;
   }
   eat() {
-    return "Кот ${this.name}ест";
+    return `Кот ${this.name}ест`;
   }
   sleep() {
-    return "Кот ${this.name}спит";
+    return `Кот ${this.name}спит`;
   }
-  catchingmice1() {
-    this.catchingmice++;
-    return "Кот" + this.catchingmice;
+  hunt() {
+    this.mouseCatched++;
+    return "Кот" + this.mouseCatched;
   }
 }
 const cat1 = new Cat("Майкун", "Доби");
-console.log(cat1.catchingmice);
+console.log(cat1.mouseCatched);
 
 class StrayCat extends Cat {
-  constructor(name, catchingmice = 0) {
-    super("stray", name, (miceeaten = 0));
+  constructor(name, catchingmice = 0, mouseEaten = 0) {
+    super("stray", name, catchingmice);
+    this.mouseEaten = mouseEaten;
+  }
+  eat() {
+    this.mouseEaten++;
+    return "Кот дворовой" + this.mouseEaten;
   }
 }
+const cat2 = new StrayCat("Tom");
+console.log(cat2.mouseEaten);
